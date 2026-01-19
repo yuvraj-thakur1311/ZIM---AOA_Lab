@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import type { UserType, LabSpecialty } from "../types/types";
 import "../index.css";
-
+ 
 const LAB_SPECIALTIES: LabSpecialty[] = [
   "CROWN_BRIDGE",
   "DENTAL_IMPLANTS",
@@ -17,7 +17,7 @@ const LAB_SPECIALTIES: LabSpecialty[] = [
   "CUSTOM_TRAYS_SPLINTS",
   "SURGICAL_GUIDES",
 ];
-
+ 
 const defaultUser: UserType = {
   first_name: "",
   middle_name: "",
@@ -34,17 +34,17 @@ const defaultUser: UserType = {
   postal_code: "",
   lab_specialties: [],
 };
-
+ 
 // Multi-select component
 interface MultiSelectProps {
   selected: LabSpecialty[];
   onChange: (selected: LabSpecialty[]) => void;
 }
-
+ 
 const MultiSelect: React.FC<MultiSelectProps> = ({ selected, onChange }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
+ 
   // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -55,7 +55,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ selected, onChange }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
+ 
   const toggleOption = (option: LabSpecialty) => {
     if (selected.includes(option)) {
       onChange(selected.filter((o) => o !== option));
@@ -63,7 +63,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ selected, onChange }) => {
       onChange([...selected, option]);
     }
   };
-
+ 
   return (
     <div className="multi-select" ref={containerRef}>
       <div
@@ -72,7 +72,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ selected, onChange }) => {
       >
         {selected.length === 0 ? "Select specialties..." : selected.join(", ")}
       </div>
-
+ 
       {open && (
         <div className="multi-select-dropdown">
           {LAB_SPECIALTIES.map((option) => (
@@ -90,22 +90,22 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ selected, onChange }) => {
     </div>
   );
 };
-
+ 
 // LabForm component
 export const LabForm: React.FC = () => {
   const [formData, setFormData] = useState<UserType>(defaultUser);
-
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
+ 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Data:", formData);
     alert("Form submitted! Check console for data.");
   };
-
+ 
   return (
     <div>
       <h1>Lab Portal</h1>
@@ -191,7 +191,7 @@ export const LabForm: React.FC = () => {
             </div>
           </div>
         </div>
-
+ 
         {/* Address Section */}
         <div className="form-section">
           <div className="section-title">Address</div>
@@ -263,7 +263,7 @@ export const LabForm: React.FC = () => {
             </div>
           </div>
         </div>
-
+ 
         {/* Lab Specialties Section */}
         <div className="form-section">
           <div className="section-title">Lab Specialties</div>
@@ -276,7 +276,7 @@ export const LabForm: React.FC = () => {
             />
           </div>
         </div>
-
+ 
         <button type="submit" className="submit-btn">
           Submit
         </button>

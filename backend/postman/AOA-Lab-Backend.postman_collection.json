@@ -1,0 +1,134 @@
+
+{
+  "info": {
+    "_postman_id": "a2d5b8e9-3c2a-4e1b-9a6b-1234567890ab",
+    "name": "AOA Lab Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "local"
+  },
+  "item": [
+    {
+      "name": "Specialties",
+      "item": [
+        {
+          "name": "Create Specialty - Hematology",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hematology\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/specialties",
+              "host": ["{{baseUrl}}"],
+              "path": ["specialties"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Specialty - Microbiology",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Microbiology\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/specialties",
+              "host": ["{{baseUrl}}"],
+              "path": ["specialties"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Specialties",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/specialties",
+              "host": ["{{baseUrl}}"],
+              "path": ["specialties"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Staff",
+      "item": [
+        {
+          "name": "Create Staff (with specialties)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Asha\",\n  \"lastName\": \"Kulkarni\",\n  \"email\": \"asha.kulkarni@example.com\",\n  \"phoneNumber\": \"9999999999\",\n  \"addressLine1\": \"123, FC Road\",\n  \"city\": \"Pune\",\n  \"countryState\": \"Maharashtra\",\n  \"country\": \"India\",\n  \"postalCode\": \"411005\",\n  \"specialtyIds\": [1, 2]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/staff",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List Staff",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/staff",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Staff Specialty (id=1, specialty=2)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/staff/1/specialties/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "1", "specialties", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Staff (id=1)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/staff/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["staff", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
