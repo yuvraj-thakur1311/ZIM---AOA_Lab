@@ -1,11 +1,9 @@
-
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { LabStaffModule } from './lab-staff/lab-staff.module';
 import { LabSpecialtyModule } from './lab-specialty/lab-specialty.module';
-
 
 @Module({
   imports: [
@@ -19,8 +17,8 @@ import { LabSpecialtyModule } from './lab-specialty/lab-specialty.module';
         username: cfg.get<string>('DB_USER'),
         password: cfg.get<string>('DB_PASS'),
         database: cfg.get<string>('DB_NAME'),
-        autoLoadEntities: true,  // loads entities from imported modules
-        synchronize: false,      // IMPORTANT: do not auto-sync against existing schema
+        autoLoadEntities: true, // loads entities from imported modules
+        synchronize: false, // IMPORTANT: do not auto-sync against existing schema
         logging: true,
       }),
     }),
