@@ -1,24 +1,32 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarInset } from "./components/ui/sidebar";
+
 import Navbar from "./pages/Navbar";
 import AppSidebar from "./pages/AppSidebar";
+import Dashboard from "./pages/Dashboard";
+import Orders from "./pages/Orders";
 
 export default function App() {
   return (
-    <SidebarProvider>
-      <div className="h-screen w-screen flex flex-col">
+    <BrowserRouter>
+      <SidebarProvider>
+        <div className="h-screen w-screen flex flex-col overflow-hidden">
+          <Navbar />
 
-        <Navbar />
+          <div className="flex flex-1 min-h-0 w-full overflow-hidden">
+            <AppSidebar />
 
-        <div className="flex flex-1 min-h-0 w-full">
-          <AppSidebar />
-
-          <SidebarInset className="w-full">
-            <main className="flex-1 w-full p-6 bg-muted/40">
-              <h2 className="text-2xl font-semibold">Dashboard</h2>
-            </main>
-          </SidebarInset>
+            <SidebarInset className="w-full overflow-hidden">
+              <main className="h-full w-full p-6 bg-muted/40 overflow-y-auto">
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/orders" element={<Orders />} />
+                </Routes>
+              </main>
+            </SidebarInset>
+          </div>
         </div>
-      </div>
-    </SidebarProvider>
+      </SidebarProvider>
+    </BrowserRouter>
   );
 }
