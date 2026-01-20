@@ -16,7 +16,7 @@ export default function AppSidebar() {
     <Sidebar
       collapsible="icon"
       variant="inset"
-      className="top-14 h-[calc(100vh-3.5rem)] oerflow-y-auto"
+      className="top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-gray-600 dark:border-gray-800"
     >
       <SidebarHeader
         className="
@@ -32,14 +32,13 @@ export default function AppSidebar() {
         <SidebarMenu>
           {/* Dashboard */}
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              tooltip="Dashboard"
-            >
+            <SidebarMenuButton asChild tooltip="Dashboard">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "bg-sidebar-accent" : ""
+                  isActive
+                    ? "bg-gray-800 dark:bg-gray-900"
+                    : ""
                 }
               >
                 <Home className="h-4 w-4" />
@@ -50,14 +49,13 @@ export default function AppSidebar() {
 
           {/* Orders */}
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              tooltip="Order List"
-            >
+            <SidebarMenuButton asChild tooltip="Order List">
               <NavLink
                 to="/orders"
                 className={({ isActive }) =>
-                  isActive ? "bg-sidebar-accent" : ""
+                  isActive
+                    ? "bg-gray-200 dark:bg-gray-700"
+                    : ""
                 }
               >
                 <List className="h-4 w-4" />
