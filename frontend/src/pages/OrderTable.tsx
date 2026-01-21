@@ -16,7 +16,7 @@ export default function OrdersTable() {
       <Table>
         <TableHeader>
           <TableRow className="bg-black hover:bg-black mb-5">
-            <TableHead className="text-white">Order ID</TableHead>
+            <TableHead className="text-white ">Order ID</TableHead>
             <TableHead className="text-white">Case Type</TableHead>
             <TableHead className="text-white">Shade</TableHead>
             <TableHead className="text-white">Tooth</TableHead>
@@ -24,7 +24,7 @@ export default function OrdersTable() {
             <TableHead className="text-white">Status</TableHead>
             <TableHead className="text-white">Order Date</TableHead>
             <TableHead className="text-white">Delivery</TableHead>
-            <TableHead className=" text-white text-right">Price</TableHead>
+            <TableHead className=" text-white">Price</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -35,9 +35,9 @@ export default function OrdersTable() {
               className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <TableCell className="font-medium">{order.order_id}</TableCell>
-              <TableCell>{order.case_type}</TableCell>
-              <TableCell>{order.shade}</TableCell>
-              <TableCell>{order.tooth_numbers.join(", ")}</TableCell>
+              <TableCell className="text-center">{order.case_type}</TableCell>
+              <TableCell>{order.shade?order.shade:"-"}</TableCell>
+              <TableCell className="text-center">{order.tooth_numbers.length!==0?order.tooth_numbers.join(", "):"-"}</TableCell>
               <TableCell>
                 <Badge variant="outline">{order.priority}</Badge>
               </TableCell>
