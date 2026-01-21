@@ -28,20 +28,20 @@ export default function OrdersTable() {
           </TableRow>
         </TableHeader>
 
-        <TableBody>
+        <TableBody className="text-center">
           {orders.map((order) => (
             <TableRow
               key={order.order_id}
               className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <TableCell className="font-medium">{order.order_id}</TableCell>
-              <TableCell className="text-center">{order.case_type}</TableCell>
-              <TableCell>{order.shade?order.shade:"-"}</TableCell>
-              <TableCell className="text-center">{order.tooth_numbers.length!==0?order.tooth_numbers.join(", "):"-"}</TableCell>
+              <TableCell >{order.case_type}</TableCell>
+              <TableCell >{order.shade?order.shade:"-"}</TableCell>
+              <TableCell >{order.tooth_numbers.length!==0?order.tooth_numbers.join(", "):"-"}</TableCell>
               <TableCell>
                 <Badge variant="outline">{order.priority}</Badge>
               </TableCell>
-              <TableCell>
+              <TableCell >
                 <Badge
                   variant={
                     order.status === "In Production" ? "default" : "secondary"
