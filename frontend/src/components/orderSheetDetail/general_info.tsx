@@ -14,6 +14,7 @@ interface iGeneralInfoProp {
   case_type:string;
   priority:string;
   status:string;
+  
 }
 
 export default function GeneralInfo({order_id,case_type, status,priority}:iGeneralInfoProp){
