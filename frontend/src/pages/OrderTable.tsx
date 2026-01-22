@@ -6,40 +6,48 @@ import {
   TableHeader,
   TableRow,
 } from "../components/ui/table";
-
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../components/ui/sheet"
+import { Button } from "../components/ui/button"
 import { Badge } from "../components/ui/badge";
 import { orders } from "../data/order";
-
+import { BsThreeDotsVertical } from "react-icons/bs";
+import GeneralInfo from "../components/orderSheetDetail/general_info"
 export default function OrdersTable() {
   return (
     <div className="rounded-lg border bg-white dark:bg-black ">
       <Table>
-        <TableHeader>
+        <TableHeader  className="border-b border-gray-400">
           <TableRow className="bg-black hover:bg-black mb-5">
             <TableHead className="text-white ">Order ID</TableHead>
-            <TableHead className="text-white">Case Type</TableHead>
-            <TableHead className="text-white">Shade</TableHead>
-            <TableHead className="text-white">Tooth</TableHead>
-            <TableHead className="text-white">Priority</TableHead>
-            <TableHead className="text-white">Status</TableHead>
-            <TableHead className="text-white">Order Date</TableHead>
-            <TableHead className="text-white">Delivery</TableHead>
-            <TableHead className=" text-white">Price</TableHead>
+            <TableHead className="text-white text-white border-l-1 border-gray-400">Case Type</TableHead>
+            <TableHead className="text-white border-l-1 border-gray-400">Priority</TableHead>
+            <TableHead className="text-white border-l-1 border-gray-400">Status</TableHead>
+            <TableHead className="text-white border-l-1 border-gray-400">Order Date</TableHead>
+            <TableHead className="text-white border-l-1 border-gray-400">Delivery</TableHead>
+            <TableHead className=" text-white border-l-1 border-gray-400">Actions</TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
           {orders.map((order) => (
+            <Sheet>
             <TableRow
               key={order.order_id}
-              className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="hover:bg-gray-200 transition-colors"
             >
               <TableCell className="font-medium">{order.order_id}</TableCell>
-              <TableCell className="text-center">{order.case_type}</TableCell>
-              <TableCell>{order.shade?order.shade:"-"}</TableCell>
-              <TableCell className="text-center">{order.tooth_numbers.length!==0?order.tooth_numbers.join(", "):"-"}</TableCell>
+              <TableCell className="text-left">{order.case_type}</TableCell>
               <TableCell>
-                <Badge variant="outline">{order.priority}</Badge>
+                <Badge variant="outline" className="bg-gray-300">{order.priority}</Badge>
               </TableCell>
               <TableCell>
                 <Badge
@@ -56,10 +64,23 @@ export default function OrdersTable() {
               <TableCell>
                 {new Date(order.expected_delivery).toLocaleDateString()}
               </TableCell>
-              <TableCell className="text-right font-medium">
-                ₹{order.billing.price}
+              <TableCell>
+                <SheetTrigger>
+                  <Button variant="outline" className="bg-gray-200">
+                  
+                    <BsThreeDotsVertical />
+                  
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[80vw] sm:w-[60vw] lg:w-[40vw] overflow-y-auto "> 
+                  <SheetHeader>
+                  Oreder Detail/{order.order_id}
+                  <GeneralInfo order_id={order.order_id} case_type={order.case_type} priority={order.priority} status={order.status}></GeneralInfo>
+                  </SheetHeader>
+                  </SheetContent>
               </TableCell>
             </TableRow>
+            </Sheet>
           ))}
         </TableBody>
       </Table>
