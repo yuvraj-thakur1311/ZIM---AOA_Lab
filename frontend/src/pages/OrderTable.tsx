@@ -37,7 +37,7 @@ export default function OrdersTable() {
           </TableRow>
         </TableHeader>
 
-        <TableBody>
+        <TableBody className="text-center">
           {orders.map((order) => (
             <Sheet>
             <TableRow
@@ -46,10 +46,12 @@ export default function OrdersTable() {
             >
               <TableCell className="font-medium">{order.order_id}</TableCell>
               <TableCell className="text-left">{order.case_type}</TableCell>
+              <TableCell >{order.shade?order.shade:"-"}</TableCell>
+              <TableCell >{order.tooth_numbers.length!==0?order.tooth_numbers.join(", "):"-"}</TableCell>
               <TableCell>
                 <Badge variant="outline" className="bg-gray-300">{order.priority}</Badge>
               </TableCell>
-              <TableCell>
+              <TableCell >
                 <Badge
                   variant={
                     order.status === "In Production" ? "default" : "secondary"
