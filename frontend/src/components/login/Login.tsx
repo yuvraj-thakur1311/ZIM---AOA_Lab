@@ -30,6 +30,8 @@ const Login: React.FC = () => {
       }
 
       const data = await res.json();
+      localStorage.setItem("role", data.role);
+
       console.log(data);
 
       navigate("/");

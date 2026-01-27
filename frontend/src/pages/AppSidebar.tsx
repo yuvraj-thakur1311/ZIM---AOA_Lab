@@ -72,7 +72,7 @@ export default function AppSidebar() {
             </NavLink>
           </SidebarMenuItem>
 
-          <SidebarMenuItem className="px-[8px]  pb-[4px] ">
+          {/* <SidebarMenuItem className="px-[8px]  pb-[4px] ">
             <NavLink to="/staffList" end>
               {({ isActive }) => (
                 <SidebarMenuButton
@@ -91,7 +91,7 @@ export default function AppSidebar() {
                 </SidebarMenuButton>
               )}
             </NavLink>
-          </SidebarMenuItem>
+          </SidebarMenuItem> */}
         </SidebarMenu>
       </SidebarContent>
     </Sidebar>
