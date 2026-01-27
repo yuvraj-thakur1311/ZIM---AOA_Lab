@@ -8,7 +8,7 @@ import {
   SidebarTrigger,
 } from "../components/ui/sidebar";
 
-import { Home, List } from "lucide-react";
+import { LayoutDashboardIcon, List, Stethoscope } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 export default function AppSidebar() {
@@ -17,6 +17,7 @@ export default function AppSidebar() {
       collapsible="icon"
       variant="inset"
       className="top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-gray-600 dark:border-gray-800"
+
     >
       <SidebarHeader
         className="
@@ -30,39 +31,46 @@ export default function AppSidebar() {
 
       <SidebarContent>
         <SidebarMenu>
-          {/* Dashboard */}
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Dashboard">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-gray-800 dark:bg-gray-900"
-                    : ""
-                }
-              >
-                <Home className="h-4 w-4 " />
-                <span>Dashboard</span>
-              </NavLink>
-            </SidebarMenuButton>
+
+
+         
+          <SidebarMenuItem className="px-[8px] pb-[4px] pt-[4px]">
+            <NavLink to="/" end>
+              {({ isActive }) => (
+                <SidebarMenuButton
+                  isActive={isActive}
+                  tooltip="Dashboard"
+                  className="cursor-pointer  data-[active=true]:bg-black data-[active=true]:text-white"
+                >
+                  <div className={` flex items-center justify-center rounded-md`}>
+                    <LayoutDashboardIcon className="h-4 w-4" />
+                  </div>
+                  <span className="group-data-[state=collapsed]:hidden">Dashboard</span>
+
+                </SidebarMenuButton>
+              )}
+            </NavLink>
           </SidebarMenuItem>
 
-          {/* Orders */}
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Order List">
-              <NavLink
-                to="/orders"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-gray-200 dark:bg-gray-700"
-                    : ""
-                }
-              >
-                <List className="h-4 w-4" />
-                <span>Order List</span>
-              </NavLink>
-            </SidebarMenuButton>
+          <SidebarMenuItem className="px-[8px]  pb-[4px] ">
+            <NavLink to="/orders" end>
+              {({ isActive }) => (
+                <SidebarMenuButton
+                  isActive={isActive}
+                  tooltip="order list"
+                  className="cursor-pointer data-[active=true]:bg-black  data-[active=true]:text-white"
+                >
+                  <div className={`flex items-center justify-center rounded-md `}>
+                    <List className="h-4 w-4" />
+                    
+
+                  </div>
+                  <span className="group-data-[state=collapsed]:hidden">Order List</span>
+                </SidebarMenuButton>
+              )}
+            </NavLink>
           </SidebarMenuItem>
+          
         </SidebarMenu>
       </SidebarContent>
     </Sidebar>
