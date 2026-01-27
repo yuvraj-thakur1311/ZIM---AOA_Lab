@@ -16,16 +16,26 @@ const Login: React.FC = () => {
     // localStorage.setItem("email", email);
     // localStorage.setItem("password", password);
     // localStorage.setItem("isLogin", "true");
-    fetch("http:local", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
+    try {
+      const res = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      if (!res.ok) {
+        throw Error("user cant find");
+      }
 
-    navigate("/");
+      const data = await res.json();
+      console.log(data);
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleForgotPassword = () => {
