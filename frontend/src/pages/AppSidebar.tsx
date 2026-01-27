@@ -17,7 +17,6 @@ export default function AppSidebar() {
       collapsible="icon"
       variant="inset"
       className="top-14 h-[calc(100vh-3.5rem)] overflow-y-auto border-r border-gray-600 dark:border-gray-800"
-
     >
       <SidebarHeader
         className="
@@ -31,9 +30,6 @@ export default function AppSidebar() {
 
       <SidebarContent>
         <SidebarMenu>
-
-
-         
           <SidebarMenuItem className="px-[8px] pb-[4px] pt-[4px]">
             <NavLink to="/" end>
               {({ isActive }) => (
@@ -42,11 +38,14 @@ export default function AppSidebar() {
                   tooltip="Dashboard"
                   className="cursor-pointer  data-[active=true]:bg-black data-[active=true]:text-white"
                 >
-                  <div className={` flex items-center justify-center rounded-md`}>
+                  <div
+                    className={` flex items-center justify-center rounded-md`}
+                  >
                     <LayoutDashboardIcon className="h-4 w-4" />
                   </div>
-                  <span className="group-data-[state=collapsed]:hidden">Dashboard</span>
-
+                  <span className="group-data-[state=collapsed]:hidden">
+                    Dashboard
+                  </span>
                 </SidebarMenuButton>
               )}
             </NavLink>
@@ -60,17 +59,39 @@ export default function AppSidebar() {
                   tooltip="order list"
                   className="cursor-pointer data-[active=true]:bg-black  data-[active=true]:text-white"
                 >
-                  <div className={`flex items-center justify-center rounded-md `}>
+                  <div
+                    className={`flex items-center justify-center rounded-md `}
+                  >
                     <List className="h-4 w-4" />
-                    
-
                   </div>
-                  <span className="group-data-[state=collapsed]:hidden">Order List</span>
+                  <span className="group-data-[state=collapsed]:hidden">
+                    Order List
+                  </span>
                 </SidebarMenuButton>
               )}
             </NavLink>
           </SidebarMenuItem>
-          
+
+          <SidebarMenuItem className="px-[8px]  pb-[4px] ">
+            <NavLink to="/staffList" end>
+              {({ isActive }) => (
+                <SidebarMenuButton
+                  isActive={isActive}
+                  tooltip="staff"
+                  className="cursor-pointer data-[active=true]:bg-black  data-[active=true]:text-white"
+                >
+                  <div
+                    className={`flex items-center justify-center rounded-md `}
+                  >
+                    <Stethoscope className="h-4 w-4" />
+                  </div>
+                  <span className="group-data-[state=collapsed]:hidden">
+                    Staff List
+                  </span>
+                </SidebarMenuButton>
+              )}
+            </NavLink>
+          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
     </Sidebar>

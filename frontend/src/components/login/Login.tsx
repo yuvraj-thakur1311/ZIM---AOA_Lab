@@ -1,31 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
- 
+
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
- 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login attempted with:', { email, password });
+    console.log("Login attempted with:", { email, password });
     // authentication logic
     // navigate to dashboard on submit
 
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    localStorage.setItem("isLogin", "true");
+    // localStorage.setItem("email", email);
+    // localStorage.setItem("password", password);
+    // localStorage.setItem("isLogin", "true");
+    fetch("http:local", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
 
-
-    navigate('/');
+    navigate("/");
   };
- 
+
   const handleForgotPassword = () => {
     console.log("Forgot password clicked");
     // forgot password logic
   };
- 
+
   return (
     <div className="flex h-screen w-full overflow-hidden">
       <div className="w-[70%] relative flex items-center justify-center overflow-hidden">
@@ -37,19 +44,17 @@ const Login: React.FC = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-red-950/70 to-black/60"></div>
         </div>
- 
+
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:30px_30px] animate-[drift_20s_linear_infinite]"></div>
         </div>
       </div>
- 
+
       <div className="w-[30%] flex items-center justify-center bg- px-8 shadow-2xl">
         <div className="w-full max-w-md">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Lab Login
-          </h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">Lab Login</h2>
           <p className="text-gray-600 mb-8">Please enter your details</p>
- 
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label
@@ -68,7 +73,7 @@ const Login: React.FC = () => {
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-black focus:ring-4 focus:ring-red-100 transition-all"
               />
             </div>
- 
+
             <div>
               <label
                 htmlFor="password"
@@ -91,14 +96,14 @@ const Login: React.FC = () => {
                 <p className="text-red-800 text-sm">{error}</p>
               </div>
             )}
- 
+
             <button
               type="submit"
               className="w-full py-3 bg-gradient-to-r from-black to-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
             >
               Sign In
             </button>
- 
+
             <div className="text-right">
               <button
                 type="button"
@@ -111,7 +116,7 @@ const Login: React.FC = () => {
           </form>
         </div>
       </div>
- 
+
       <style>{`
         @keyframes drift {
           from {
@@ -125,6 +130,5 @@ const Login: React.FC = () => {
     </div>
   );
 };
- 
+
 export default Login;
- 
