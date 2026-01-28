@@ -27,6 +27,7 @@ export default function GeneralInfo({
       : priority === "STANDARD"
         ? "bg-amber-400 text-amber-900"
         : "bg-slate-300 text-slate-900";
+  console.log("g");
 
   return (
     <Card
