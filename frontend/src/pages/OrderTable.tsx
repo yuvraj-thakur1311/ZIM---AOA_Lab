@@ -199,8 +199,8 @@ export default function OrdersTable() {
   "
                   >
                     {/* Header */}
-                    <div className="sticky top-0 z-10 bg-white dark:bg-neutral-950 border-b px-6 py-4">
-                      <SheetHeader className=" bg-gray-300 ">
+                    <div className="sticky top-0 z-10 bg-white dark:bg-neutral-950 border-b px-6">
+                      <SheetHeader className="  ">
                         <SheetTitle className="text-lg font-semibold ">
                           Order Details
                         </SheetTitle>
@@ -211,7 +211,7 @@ export default function OrdersTable() {
                     </div>
 
                     {/* Content */}
-                    <div className="px-6 py-4 space-y-6 overflow-y-auto h-[calc(100vh-80px)] ">
+                    <div className="px-6  space-y-6 overflow-y-auto h-[calc(100vh-80px)] ">
                       <section className="space-y-3">
                         <GeneralInfo
                           order_id={order.order_id}
